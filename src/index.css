@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-content: center;
+  background-color: #9195a3;
+  overflow: hidden;
+}
+
+#root {
+  width: 100vw;
+  max-width: 400px;
+  height: 100vh;
+  background-color: #22275b;
+  overflow-y: scroll;
+  position: relative;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
