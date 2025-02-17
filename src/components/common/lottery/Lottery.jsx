@@ -4,10 +4,10 @@ import { Button, Typography } from "@mui/material";
 import { ArrowForwardIos } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 
-const Lottery = ({ game }) => {
+const Lottery = ({ game, gameCategoryUrl }) => {
   return (
     <div className="relative">
-      <Link to="/games">
+      <Link to={`${gameCategoryUrl}/${game.gameUrl}`}>
       <img src={lotteryBackground} alt="Lottery Background" />
       <Typography
         sx={{
@@ -51,10 +51,12 @@ const Lottery = ({ game }) => {
 };
 
 Lottery.propTypes = {
+  gameCategoryUrl: PropTypes.string.isRequired,
   game: PropTypes.shape({
     id: PropTypes.number.isRequired,
     text: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
+    gameUrl: PropTypes.string.isRequired
   }).isRequired,
 };
 

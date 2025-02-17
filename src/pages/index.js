@@ -12,6 +12,8 @@ import CustomerService from "./customer-service/CustomerService.jsx";
 import BeginnerGuide from "./beginner-guide/BeginnerGuide.jsx";
 import Download from "./download/Download.jsx";
 import Games from "./games/Games.jsx"
+import GameCategory from "./game-category/GameCategory.jsx";
+import Game from "./game/Game.jsx"
 
 export {
   Home,
@@ -27,5 +29,7 @@ export {
   CustomerService,
   BeginnerGuide,
   Download,
-  Games
+  Games,
+  Game,
+  GameCategory
 };

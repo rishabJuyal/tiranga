@@ -23,18 +23,6 @@ const NoticeBox = () => {
       <div className="relative ml-5 w-3/5">
         <div
           className="w-full pt-1"
-          // initial={{
-          //   y: 100,
-          // }}
-          // animate={{
-          //   y: [0, -100],
-          // }}
-          // transition={{
-          //   ease: "easeInOut",
-          //   duration: 2,
-          //   repeat: Infinity,
-          //   delay: 5,
-          // }}
         >
           {shortNotices[currentNoticeIndex].text}
         </div>

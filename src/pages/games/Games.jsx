@@ -1,6 +1,6 @@
 const Games = () => {
   return (
-    <div className="text-3xl font-semibold underline text-white">Game</div>
+    <div className="text-3xl font-semibold underline text-white">All Games</div>
   );
 };
 

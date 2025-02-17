@@ -8,7 +8,7 @@ import TabBox from "./common/tab-box/TabBox";
 import BottomNavigationBox from "./common/bottom-navigation-box/BottomNavigationBox";
 import TermsBox from "./common/terms-box/TermsBox";
 import GameCategoryBox from "./common/game-category-box/GameCategoryBox";
-import Game from "./common/game/Game"
+import GameCard from "./common/game-card/GameCard"
 import Lottery from "./common/lottery/Lottery"
 import WinningInfoBox from "./common/winning-info-box/WinningInfoBox";
 
@@ -23,7 +23,7 @@ export {
   BottomNavigationBox,
   TermsBox,
   GameCategoryBox,
-  Game,
+  GameCard,
   Lottery,
   WinningInfoBox
 };

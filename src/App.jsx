@@ -7,9 +7,27 @@ import {
   useLocation,
   useNavigate,
 } from "react-router-dom";
-import { Home, Register, Login, Activity, Promotion, Wallet, Account, AboutUs, Language, Notification, CustomerService, BeginnerGuide, Download, Games } from "./pages";
+import {
+  Home,
+  Register,
+  Login,
+  Activity,
+  Promotion,
+  Wallet,
+  Account,
+  AboutUs,
+  Language,
+  Notification,
+  CustomerService,
+  BeginnerGuide,
+  Download,
+  Games,
+  GameCategory,
+  Game,
+} from "./pages";
 import { Loader, Header, Footer, PageContainer } from "./components";
 import ProtectedRoute from "./routes/ProtectedRoute.jsx";
+import LayoutRoute from "./routes/LayoutRout.jsx";
 
 const LayoutHandler = () => {
   const [showLayout, setShowLayout] = useState(true);
@@ -40,33 +58,32 @@ const LayoutHandler = () => {
     <>
       {showLayout && <Header />}
       <PageContainer>
-      <Suspense fallback={<Loader />}>
-        <Routes>
-          {/* Normal Routes for All Visitors */}
-          <Route path="/" element={<Home />} />
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            {/* Normal Routes for All Visitors */}
+            <Route path="/" element={<Home />} />
 
-          {/* Protected Routes for Authentication */}
-          <Route
-            element={
-              <ProtectedRoute
-                isAuthenticated={isAuthenticated}
-                isUserAllowed={false}
-              />
-            }
-          >
-          </Route>
-              <Route path="/register" element={<Register />} />
-              <Route path="/login" element={<Login />} />
+            {/* Protected Routes for Authentication */}
+            <Route
+              element={
+                <ProtectedRoute
+                  isAuthenticated={isAuthenticated}
+                  isUserAllowed={false}
+                />
+              }
+            ></Route>
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
 
-          {/* Protected Routes for Logged Users */}
-          <Route
-            element={
-              <ProtectedRoute
-                isAuthenticated={isAuthenticated}
-                isUserAllowed={true}
-              />
-            }
-          >
+            {/* Protected Routes for Logged Users */}
+            <Route
+              element={
+                <ProtectedRoute
+                  isAuthenticated={isAuthenticated}
+                  isUserAllowed={true}
+                />
+              }
+            >
               <Route path="/activity" element={<Activity />} />
               <Route path="/about-us" element={<AboutUs />} />
               <Route path="/promotion" element={<Promotion />} />
@@ -77,10 +94,16 @@ const LayoutHandler = () => {
               <Route path="/customer-service" element={<CustomerService />} />
               <Route path="/beginner-guide" element={<BeginnerGuide />} />
               <Route path="/download" element={<Download />} />
-              <Route path="/games" element={<Games />} />
-          </Route>
-        </Routes>
-      </Suspense>
+              <Route path="/games" element={<LayoutRoute />}>
+                <Route index element={<Games />} />
+                <Route path=":gameCategory" element={<LayoutRoute />}>
+                  <Route index element={<GameCategory />} />
+                  <Route path=":gameName" element={<Game />} />
+                </Route>
+              </Route>
+            </Route>
+          </Routes>
+        </Suspense>
       </PageContainer>
       {showLayout && <Footer />}
     </>
@@ -91,7 +114,7 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => {
-      setIsLoading(false)
+      setIsLoading(false);
     }, 2000);
   });
 

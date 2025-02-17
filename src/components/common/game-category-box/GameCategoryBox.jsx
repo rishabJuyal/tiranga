@@ -1,6 +1,6 @@
 import { ArrowForwardIos, LocalFireDepartment } from "@mui/icons-material";
 import { Button, Typography } from "@mui/material";
-import { Game, Lottery } from "../../index";
+import { GameCard, Lottery } from "../../index";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
@@ -28,7 +28,7 @@ const GameCategoryBox = ({ gameCategory }) => {
             fontSize: "12px",
           }}
           component={Link}
-          to="/games"
+          to={gameCategory.gameCategoryUrl}
         >
           All{" "}
           <Typography
@@ -49,9 +49,18 @@ const GameCategoryBox = ({ gameCategory }) => {
       >
         {gameCategory.games.map((game) =>
           gameCategory.title === "Lottery" ? (
-            <Lottery key={game.id} game={game} />
+            <Lottery
+              key={game.id}
+              game={game}
+              gameCategoryUrl={gameCategory.gameCategoryUrl}
+            />
           ) : (
-            <Game key={game.id} game={game} title={gameCategory.title} />
+            <GameCard
+              key={game.id}
+              game={game}
+              title={gameCategory.title}
+              gameCategoryUrl={gameCategory.gameCategoryUrl}
+            />
           )
         )}
       </div>
@@ -63,6 +72,7 @@ GameCategoryBox.propTypes = {
   gameCategory: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
+    gameCategoryUrl: PropTypes.string.isRequired,
     totalGames: PropTypes.number.isRequired,
     games: PropTypes.arrayOf(
       PropTypes.shape({
