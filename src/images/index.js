@@ -65,13 +65,20 @@ import fishingFour from "./fishing-four.png";
 import fishingFive from "./fishing-five.png";
 import fishingSix from "./fishing-six.png";
 import rummyOne from "./rummy-one.png";
-import winGameOne from "./win-game-one.png"
-import winGameTwo from "./win-game-two.png"
-import winnerOne from "./winner-one.png"
-import winnerTwo from "./winner-two.png"
-import winnerThree from "./winner-three.png"
-import winnerFour from "./winner-four.png"
-import winnerFive from "./winner-five.png"
+import winGameOne from "./win-game-one.png";
+import winGameTwo from "./win-game-two.png";
+import winnerOne from "./winner-one.png";
+import winnerTwo from "./winner-two.png";
+import winnerThree from "./winner-three.png";
+import winnerFour from "./winner-four.png";
+import winnerFive from "./winner-five.png";
+import virtualOne from "./virtual-one.jpeg";
+import virtualTwo from "./virtual-two.jpeg";
+import virtualThree from "./virtual-three.jpeg";
+import virtualFour from "./virtual-four.jpeg";
+import virtualFive from "./virtual-five.jpeg";
+import virtualSix from "./virtual-six.jpeg";
+import virtualSeven from "./virtual-seven.jpeg";
 
 export {
   logo,
@@ -147,5 +154,12 @@ export {
   winnerTwo,
   winnerThree,
   winnerFour,
-  winnerFive
+  winnerFive,
+  virtualOne,
+  virtualTwo,
+  virtualThree,
+  virtualFour,
+  virtualFive,
+  virtualSix,
+  virtualSeven
 };

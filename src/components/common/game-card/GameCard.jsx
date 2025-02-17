@@ -3,7 +3,13 @@ import { Link } from "react-router-dom";
 
 const GameCard = ({ game, title, gameCategoryUrl }) => {
   return (
-    <div className="h-fit">
+    <div
+      className={`h-fit ${
+        title === "Virtual Games" && game.id === 1.3
+          ? "rounded-3xl"
+          : game.id === 1.5 ? "rounded-4xl" : "rounded-xl"
+      } overflow-hidden `}
+    >
       <Link to={`${gameCategoryUrl}/${game.gameUrl}`}>
         <div className="bg-[#2aa2f3] rounded-xl h-40">
           <img src={game.image} alt="Game Image" className="h-full" />
