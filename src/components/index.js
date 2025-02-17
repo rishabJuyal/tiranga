@@ -8,9 +8,10 @@ import TabBox from "./common/tab-box/TabBox";
 import BottomNavigationBox from "./common/bottom-navigation-box/BottomNavigationBox";
 import TermsBox from "./common/terms-box/TermsBox";
 import GameCategoryBox from "./common/game-category-box/GameCategoryBox";
-import GameCard from "./common/game-card/GameCard"
-import Lottery from "./common/lottery/Lottery"
+import GameCard from "./common/game-card/GameCard";
+import Lottery from "./common/lottery/Lottery";
 import WinningInfoBox from "./common/winning-info-box/WinningInfoBox";
+import Aviator from "./common/aviator/Aviator";
 
 export {
   Loader,
@@ -25,5 +26,6 @@ export {
   GameCategoryBox,
   GameCard,
   Lottery,
-  WinningInfoBox
+  WinningInfoBox,
+  Aviator,
 };
