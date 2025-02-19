@@ -5,6 +5,7 @@ import bottomNavigation from "./bottomNavigation.jsx";
 import { terms, termsImages } from "./terms.js";
 import gameCategories from "./gameCategories.js";
 import winningInfo from "./winningInfo.js";
+import jiliGames from "./jiliGames.js";
 
 export {
   footer,
@@ -16,4 +17,5 @@ export {
   termsImages,
   gameCategories,
   winningInfo,
+  jiliGames,
 };

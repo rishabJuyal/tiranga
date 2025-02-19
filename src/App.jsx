@@ -21,13 +21,13 @@ import {
   CustomerService,
   BeginnerGuide,
   Download,
-  Games,
-  GameCategory,
+  // Games,
+  // GameCategory,
   Game,
 } from "./pages";
 import { Loader, Header, Footer, PageContainer } from "./components";
 import ProtectedRoute from "./routes/ProtectedRoute.jsx";
-import LayoutRoute from "./routes/LayoutRout.jsx";
+// import LayoutRoute from "./routes/LayoutRout.jsx";
 
 const LayoutHandler = () => {
   const [showLayout, setShowLayout] = useState(true);
@@ -94,13 +94,7 @@ const LayoutHandler = () => {
               <Route path="/customer-service" element={<CustomerService />} />
               <Route path="/beginner-guide" element={<BeginnerGuide />} />
               <Route path="/download" element={<Download />} />
-              <Route path="/games" element={<LayoutRoute />}>
-                <Route index element={<Games />} />
-                <Route path=":gameCategory" element={<LayoutRoute />}>
-                  <Route index element={<GameCategory />} />
-                  <Route path=":gameName" element={<Game />} />
-                </Route>
-              </Route>
+              <Route path="/games/:gameCategory/:gameName" element={<Game />} />
             </Route>
           </Routes>
         </Suspense>

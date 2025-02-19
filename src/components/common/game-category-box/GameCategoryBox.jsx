@@ -1,10 +1,11 @@
 import { ArrowForwardIos, LocalFireDepartment } from "@mui/icons-material";
 import { Button, Typography } from "@mui/material";
 import { GameCard, Lottery } from "../../index";
+import { jiliGames } from "../../../data";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
-const GameCategoryBox = ({ gameCategory }) => {
+const GameCategoryBox = ({ gameCategory, currentTab, changeTab }) => {
   return (
     <div className="my-8">
       <div className="mb-3 w-full flex justify-between items-center">
@@ -16,38 +17,63 @@ const GameCategoryBox = ({ gameCategory }) => {
           )}
           {gameCategory.title}
         </div>
-        <Button
-          variant="outlined"
-          sx={{
-            color: "#aaa",
-            borderColor: "#aaa",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: "5px",
-            fontSize: "12px",
-          }}
-          component={Link}
-          to={gameCategory.gameCategoryUrl}
-        >
-          All{" "}
-          <Typography
-            color="primary"
-            sx={{ fontSize: "12px", marginBottom: "2px" }}
+        {currentTab === "Popular" && (
+          <Button
+            variant="outlined"
+            sx={{
+              color: "#aaa",
+              borderColor: "#aaa",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "5px",
+              fontSize: "12px",
+            }}
+            // component={Link}
+            // to={gameCategory.gameCategoryUrl}
+            onClick={() => changeTab(gameCategory.title)}
           >
-            {gameCategory.totalGames}
-          </Typography>
-          <ArrowForwardIos
-            sx={{ color: "#636367", fontSize: "12px", marginBottom: "2px" }}
-          />
-        </Button>
+            All{" "}
+            <Typography
+              color="primary"
+              sx={{ fontSize: "12px", marginBottom: "2px" }}
+            >
+              {gameCategory.totalGames
+                ? gameCategory.totalGames
+                : jiliGames.length}
+            </Typography>
+            <ArrowForwardIos
+              sx={{ color: "#636367", fontSize: "12px", marginBottom: "2px" }}
+            />
+          </Button>
+        )}
       </div>
       <div
         className={`grid ${
           gameCategory.title === "Lottery" ? "grid-cols-2" : "grid-cols-3"
         } gap-3`}
       >
-        {gameCategory.games.map((game) =>
+        {currentTab === "Jili"
+          ? jiliGames.map((game) => (
+              <GameCard key={game.id} game={game} title={gameCategory.title} />
+            ))
+          : gameCategory.games.map((game) =>
+              gameCategory.title === "Lottery" ? (
+                <Lottery
+                  key={game.id}
+                  game={game}
+                  gameCategoryUrl={gameCategory.gameCategoryUrl}
+                />
+              ) : (
+                <GameCard
+                  key={game.id}
+                  game={game}
+                  title={gameCategory.title}
+                  gameCategoryUrl={gameCategory.gameCategoryUrl}
+                />
+              )
+            )}
+        {/* {gameCategory.games.map((game) =>
           gameCategory.title === "Lottery" ? (
             <Lottery
               key={game.id}
@@ -62,13 +88,15 @@ const GameCategoryBox = ({ gameCategory }) => {
               gameCategoryUrl={gameCategory.gameCategoryUrl}
             />
           )
-        )}
+        )} */}
       </div>
     </div>
   );
 };
 
 GameCategoryBox.propTypes = {
+  currentTab: PropTypes.string.isRequired,
+  changeTab: PropTypes.func.isRequired,
   gameCategory: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
@@ -82,6 +110,7 @@ GameCategoryBox.propTypes = {
       }).isRequired
     ),
   }).isRequired,
+  children: PropTypes.arrayOf,
 };
 
 export default GameCategoryBox;

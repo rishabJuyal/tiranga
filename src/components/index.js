@@ -12,6 +12,7 @@ import GameCard from "./common/game-card/GameCard";
 import Lottery from "./common/lottery/Lottery";
 import WinningInfoBox from "./common/winning-info-box/WinningInfoBox";
 import Aviator from "./common/aviator/Aviator";
+import PushpaRani from "./common/pushpa-rani/PusphpaRani"
 
 export {
   Loader,
@@ -28,4 +29,5 @@ export {
   Lottery,
   WinningInfoBox,
   Aviator,
+  PushpaRani,
 };

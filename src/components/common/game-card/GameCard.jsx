@@ -7,14 +7,23 @@ const GameCard = ({ game, title, gameCategoryUrl }) => {
       className={`h-fit ${
         title === "Virtual Games" && game.id === 1.3
           ? "rounded-3xl"
-          : game.id === 1.5 ? "rounded-4xl" : "rounded-xl"
+          : game.id === 1.5
+          ? "rounded-4xl"
+          : "rounded-xl"
       } overflow-hidden `}
     >
-      <Link to={`${gameCategoryUrl}/${game.gameUrl}`}>
-        <div className="bg-[#2aa2f3] rounded-xl h-40">
-          <img src={game.image} alt="Game Image" className="h-full" />
-        </div>
-      </Link>
+      {game.gameUrl ? (
+        <Link to={`${gameCategoryUrl}/${game.gameUrl}`}>
+          <div className="bg-[#2aa2f3] rounded-xl h-40">
+            <img src={game.img} alt="Game Image" className="h-full" />
+          </div>
+        </Link>
+      ) : (
+          <div className="bg-[#2aa2f3] rounded-xl h-40">
+            <img src={game.img} alt="Game Image" className="h-full" />
+          </div>
+      )}
+
       {title === "Platform Recommendation" && (
         <div className="w-full h-6 bg-white mt-2 rounded-2xl text-white relative">
           <div
@@ -36,9 +45,9 @@ GameCard.propTypes = {
   gameCategoryUrl: PropTypes.string.isRequired,
   game: PropTypes.shape({
     id: PropTypes.number.isRequired,
-    image: PropTypes.string.isRequired,
+    img: PropTypes.string.isRequired,
     odd: PropTypes.number,
-    gameUrl: PropTypes.string.isRequired,
+    gameUrl: PropTypes.string,
   }).isRequired,
 };
 
