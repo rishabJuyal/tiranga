@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Unity, useUnityContext } from "react-unity-webgl";
+import ResponseFile from "./ResponseFile";
 import "./Aviator.css";
 
 export default function UnityGame() {
@@ -68,11 +69,16 @@ export default function UnityGame() {
 
       // Function to fetch data (multiplier and crash state) from the backend API
       const fetchData = async () => {
-        try {
-          const response = await fetch(
-            "https://ag.play-247.in/games/api/v1/virtual-games/aviatorGame"
-          );
-          const data = await response.json();
+    try {
+      const accessToken = localStorage.getItem("refreshToken");
+      const response = await fetch("https://ag.play-247.in/games/api/v1/virtual-games/aviatorGame", {
+        method: "GET", // HTTP method (GET in this case)
+        headers: {
+            "Authorization": `Bearer ${accessToken}`, // Add JWT token as Bearer token
+            "Content-Type": "application/json" // Optional: if your API expects JSON format
+        }
+      });
+      const data = await response.json();
           const newMultiplier = data["multiplierRange"]; // the API returns a "next target" field
 
           // Simulating a boolean crash value from the API
@@ -136,6 +142,7 @@ export default function UnityGame() {
           {/* Display the current multiplier and plane crash state
           <p>Current Multiplier: {inputValue.toFixed(2)}</p>
           <p>Plane Crashed: {isPlaneCrashed ? "Yes" : "No"}</p>  */}
+          <ResponseFile/>
         </div>
       );
 }
